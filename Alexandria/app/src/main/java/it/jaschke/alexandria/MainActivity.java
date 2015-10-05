@@ -69,12 +69,14 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             // Supply index input as an argument.
             Bundle args = new Bundle();
             args.putString("barcodeValue", barcodeValue);
+            getIntent().removeExtra("barcodeValue");
             BackToAddBookFragment.setArguments(args);
             FragmentManager BackToAddBookfragmentManager = getSupportFragmentManager();
             BackToAddBookfragmentManager.beginTransaction()
                     .replace(R.id.container, BackToAddBookFragment)
                     .addToBackStack((String) title)
                     .commit();
+
         }
 
     }
@@ -163,6 +165,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 
     @Override
     public void onItemSelected(String ean) {
+
         Bundle args = new Bundle();
         args.putString(BookDetail.EAN_KEY, ean);
 
